@@ -25,9 +25,18 @@ namespace API_Ecommerce.Controllers
 
         // GET: api/Orders
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
+        public async Task<ActionResult> GetOrders(
+            [FromQuery] int skip, 
+            [FromQuery] int take)
         {
-            return await _context.Orders.Include(x => x.Products).Include(x => x.Team).ToListAsync();
+            var count = await _context.Orders.CountAsync();
+            var orders = await _context.Orders.Include(x => x.Products).Include(x => x.Team).OrderByDescending(x => x.CreatedDate).Skip(skip).Take(take).ToListAsync();
+
+            return Ok(new
+            {
+                total = count,
+                orders = orders
+            });
         }
 
         // GET: api/Orders/5

@@ -40,7 +40,7 @@ namespace API_Ecommerce.Controllers
             return new
             {
                 user = returnedUser,
-                token = "aaaaaa",
+                token = token,
             };
 
             //await _context.SaveChangesAsync();
