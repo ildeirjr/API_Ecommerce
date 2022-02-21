@@ -7,3 +7,5 @@ Para executar a API, é necessário ter o ambiente .NET 6.0 instalado. Isto feit
 ```
 dotnet run
 ```
+
+OBS.: Este projeto inclui também o arquivo de solução API_Ecommerce.sln, o que possibilita abrí-lo na IDE Visual Studio.
