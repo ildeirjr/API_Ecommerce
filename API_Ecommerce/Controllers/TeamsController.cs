@@ -27,7 +27,7 @@ namespace API_Ecommerce.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Team>>> GetTeams()
         {
-            return await _context.Teams.ToListAsync();
+            return await _context.Teams.OrderBy(x => x.Name).ToListAsync();
         }
 
         // GET: api/Teams/5
